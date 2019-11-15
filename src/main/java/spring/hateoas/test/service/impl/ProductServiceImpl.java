@@ -16,11 +16,13 @@ import spring.hateoas.test.service.IProductService;
 public class ProductServiceImpl implements IProductService {
 	private final IProductRepository productRepository;
 	
+	@Transactional(readOnly=true)
 	@Override
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
-
+	
+	@Transactional(readOnly=true)
 	@Override
 	public Product getProduct(Long idP) {
 		return productRepository.findById(idP).get();
